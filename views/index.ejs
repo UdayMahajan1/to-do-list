@@ -1,0 +1,36 @@
+<!-- it becomes hectic to write the html boilerplate code for headers and footers always for 
+designing a new html page so we use ejs to write the header and footer (with styled sheets) 
+and use them in newly created html by writing the below code-->
+
+<%- include("header") -%>
+
+<body>
+
+    <div class="box" id="heading">
+        <h1><%=day%></h1>
+    </div>
+
+    <div class="box">
+        <!-- here the tag seen below is used to write the control flow statements in ejs the 
+        important thing to take note of is we used task.length and not items.length 
+        because in ejs to access the array we use the word task-->
+
+        <% for(let i = 0 ; i < task.length ; i++) { %>
+        <div class="item">
+            <button class="btn" type="button" name="btn"><i class="fa fa-trash"></i></button>
+            <input type="checkbox">
+            <p><%=task[i]%></p>
+        </div>
+        <% } %>
+
+        <form class="item" action="/" method="post">
+            <label for="toDo"></label>
+            <!-- here autocomplete = off turns off the suggestions that drop down when you enter into a field  -->
+            <input type="text" name='toDo' placeholder="New Item" autocomplete="off"> 
+            <input class="button" type="submit" value="+">
+        </form>
+        
+    </div>
+    
+</body>
+</html>
